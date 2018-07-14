@@ -53,7 +53,7 @@ func renderArena(a *arena, top, bottom, left int) {
 }
 
 func renderQuitMessage(right, bottom int) {
-	m := "Press ESC to quit"
+	m := "Press 'q' to quit"
 	tbprint(right-17, bottom+1, defaultColor, defaultColor, m)
 }
 

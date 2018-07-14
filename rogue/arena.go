@@ -14,3 +14,19 @@ func newArena(p *player, h, w int) *arena {
 	}
 	return a
 }
+
+func (a *arena) move_player(d direction) error {
+	h := a.player.body
+	// Check new co-ordinate
+	nc := coord{x: h.x, y: h.y}
+	max_coord := coord{x: a.width, y: a.height}
+
+	nc.move(d)
+	if nc.onBorder(max_coord) {
+		return nil
+	} else {
+		a.player.body.move(d)
+		return nil
+	}
+	return nil
+}

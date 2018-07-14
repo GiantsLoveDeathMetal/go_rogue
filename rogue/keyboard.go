@@ -46,9 +46,10 @@ func listenToKeyboard(evChan chan keyboardEvent) {
 				evChan <- keyboardEvent{eventType: MOVE, key: ev.Key}
 			case termbox.KeyArrowUp:
 				evChan <- keyboardEvent{eventType: MOVE, key: ev.Key}
-			case termbox.KeyEsc:
-				evChan <- keyboardEvent{eventType: END, key: ev.Key}
 			default:
+				if ev.Ch == 'q' {
+					evChan <- keyboardEvent{eventType: END, key: ev.Key}
+				}
 				if ev.Ch == 'r' {
 					evChan <- keyboardEvent{eventType: RETRY, key: ev.Key}
 				}
