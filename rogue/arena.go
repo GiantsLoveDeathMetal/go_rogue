@@ -14,10 +14,3 @@ func newArena(p *player, h, w int) *arena {
 	}
 	return a
 }
-
-func (a *arena) movePlayer() error {
-	if err := a.player.move(); err != nil {
-		return err
-	}
-	return nil
-}

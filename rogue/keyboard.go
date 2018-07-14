@@ -38,6 +38,14 @@ func listenToKeyboard(evChan chan keyboardEvent) {
 		switch ev := termbox.PollEvent(); ev.Type {
 		case termbox.EventKey:
 			switch ev.Key {
+			case termbox.KeyArrowLeft:
+				evChan <- keyboardEvent{eventType: MOVE, key: ev.Key}
+			case termbox.KeyArrowDown:
+				evChan <- keyboardEvent{eventType: MOVE, key: ev.Key}
+			case termbox.KeyArrowRight:
+				evChan <- keyboardEvent{eventType: MOVE, key: ev.Key}
+			case termbox.KeyArrowUp:
+				evChan <- keyboardEvent{eventType: MOVE, key: ev.Key}
 			case termbox.KeyEsc:
 				evChan <- keyboardEvent{eventType: END, key: ev.Key}
 			default:

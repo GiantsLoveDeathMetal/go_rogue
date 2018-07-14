@@ -13,56 +13,43 @@ const (
 type direction int
 
 type player struct {
-	body      []coord
-	direction direction
-	length    int
+	body      coord
+	character rune
 }
 
-func newPlayer(d direction, b []coord) *player {
+func newPlayer(b coord) *player {
 	return &player{
-		length:    len(b),
+		// Position of the player
 		body:      b,
-		direction: d,
+		character: '@',
 	}
-}
-
-func (p *player) changeDirection(d direction) {
-	p.direction = d
-}
-
-func (p *player) head() coord {
-	return p.body[len(p.body)-1]
 }
 
 func (p *player) die() error {
 	return errors.New("Died")
 }
 
-func (p *player) move() error {
-	h := p.head()
-	c := coord{x: h.x, y: h.y}
-
-	switch p.direction {
+func (p *player) move(d direction) error {
+	switch d {
 	case RIGHT:
-		c.x++
+		p.body.x += 1
 	case LEFT:
-		c.x--
+		p.body.x -= 1
 	case UP:
-		c.y++
+		p.body.y += 1
 	case DOWN:
-		c.y--
+		p.body.y -= 1
 	}
-	if p.isOnPosition(c) {
-		return p.die()
-	}
+	// if p.isOnPosition(c) {
+	//	return p.die()
+	//}
 	return nil
 }
 
 func (p *player) isOnPosition(c coord) bool {
-	for _, b := range p.body {
-		if b.x == c.x && b.y == c.y {
-			return true
-		}
+	h := p.body
+	if h.x == c.x && h.y == c.y {
+		return true
 	}
 	return false
 }

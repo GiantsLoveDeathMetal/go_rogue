@@ -28,9 +28,13 @@ func (g *Game) render() error {
 }
 
 func renderPlayer(left, bottom int, p *player) {
-	for _, b := range p.body {
-		termbox.SetCell(left+b.x, bottom-b.y, ' ', playerColour, playerColour)
-	}
+	termbox.SetCell(
+		left+p.body.x,
+		bottom-p.body.y,
+		p.character,
+		playerColour,
+		bgColor,
+	)
 }
 
 func renderArena(a *arena, top, bottom, left int) {

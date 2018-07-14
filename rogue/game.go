@@ -12,9 +12,7 @@ type Game struct {
 }
 
 func initialPlayer() *player {
-	return newPlayer(RIGHT, []coord{
-		coord{x: 1, y: 1},
-	})
+	return newPlayer(coord{x: 10, y: 10})
 }
 
 func (g *Game) end() {
@@ -53,24 +51,18 @@ mainloop:
 			switch e.eventType {
 			case MOVE:
 				d := keyToDirection(e.key)
-				g.arena.player.changeDirection(d)
-				g.arena.movePlayer()
+				g.arena.player.move(d)
 			case RETRY:
 				continue
 			case END:
 				break mainloop
 			}
 		default:
-			if !g.isOver {
-				if err := g.arena.movePlayer(); err != nil {
-					g.end()
-				}
-			}
 			if err := g.render(); err != nil {
 				panic(err)
 			}
 
-			time.Sleep(g.moveInterval())
+			// time.Sleep(g.moveInterval())
 		}
 	}
 }
