@@ -1,7 +1,11 @@
 package rogue
 
-import "github.com/nsf/termbox-go"
-import "github.com/mattn/go-runewidth"
+import (
+	"fmt"
+
+	"github.com/mattn/go-runewidth"
+	"github.com/nsf/termbox-go"
+)
 
 const (
 	defaultColor = termbox.ColorDefault
@@ -22,6 +26,7 @@ func (g *Game) render() error {
 	)
 	renderArena(g.arena, top, bottom, left)
 	renderPlayer(left, bottom, g.arena.player)
+	renderHealth(left, bottom, g.arena.player)
 	renderQuitMessage(right, bottom)
 
 	return termbox.Flush()
@@ -50,6 +55,11 @@ func renderArena(a *arena, top, bottom, left int) {
 
 	fill(left, top, a.width, 1, termbox.Cell{Ch: '─'})
 	fill(left, bottom, a.width, 1, termbox.Cell{Ch: '─'})
+}
+
+func renderHealth(left, bottom int, p *player) {
+	hp := fmt.Sprintf("Health: %v/%v", p.current_health, p.max_health)
+	tbprint(left, bottom+1, defaultColor, defaultColor, hp)
 }
 
 func renderQuitMessage(right, bottom int) {

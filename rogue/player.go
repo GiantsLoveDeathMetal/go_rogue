@@ -13,15 +13,19 @@ const (
 type direction int
 
 type player struct {
-	body      coord
-	character rune
+	body           coord
+	max_health     int
+	current_health int
+	character      rune
 }
 
 func newPlayer(b coord) *player {
 	return &player{
 		// Position of the player
-		body:      b,
-		character: '@',
+		body:           b,
+		max_health:     10,
+		current_health: 10,
+		character:      '@',
 	}
 }
 
