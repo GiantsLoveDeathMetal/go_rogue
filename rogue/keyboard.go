@@ -16,6 +16,16 @@ type keyboardEvent struct {
 	key       termbox.Key
 }
 
+// Keyboard movement directions
+const (
+	RIGHT direction = 1 + iota
+	LEFT
+	UP
+	DOWN
+)
+
+type direction int
+
 func keyToDirection(k termbox.Key) direction {
 	switch k {
 	case termbox.KeyArrowLeft:

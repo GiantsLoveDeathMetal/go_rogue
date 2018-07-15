@@ -2,16 +2,6 @@ package rogue
 
 import "errors"
 
-// player movement directions
-const (
-	RIGHT direction = 1 + iota
-	LEFT
-	UP
-	DOWN
-)
-
-type direction int
-
 type player struct {
 	body           coord
 	max_health     int

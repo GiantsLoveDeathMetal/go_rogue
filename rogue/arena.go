@@ -1,16 +1,20 @@
 package rogue
 
 type arena struct {
-	player *player
-	height int
-	width  int
+	player  *player
+	enemies []enemy
+	height  int
+	width   int
 }
 
 func newArena(p *player, h, w int) *arena {
+	e1 := *spawnEnemy(coord{x: 1, y: 1})
+	e2 := *spawnEnemy(coord{x: 12, y: 10})
 	a := &arena{
-		player: p,
-		height: h,
-		width:  w,
+		player:  p,
+		enemies: []enemy{e1, e2},
+		height:  h,
+		width:   w,
 	}
 	return a
 }

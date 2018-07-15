@@ -27,10 +27,23 @@ func (g *Game) render() error {
 	)
 	renderArena(g.arena, top, bottom, left)
 	renderPlayer(left, bottom, g.arena.player)
+	renderEnemies(left, bottom, g.arena.enemies)
 	renderHealth(left, bottom, g.arena.player)
 	renderQuitMessage(right, bottom)
 
 	return termbox.Flush()
+}
+
+func renderEnemies(left, bottom int, es []enemy) {
+	for _, e := range es {
+		termbox.SetCell(
+			left+e.body.x,
+			bottom-e.body.y,
+			e.character,
+			playerColour,
+			altBgColour,
+		)
+	}
 }
 
 func renderPlayer(left, bottom int, p *player) {
