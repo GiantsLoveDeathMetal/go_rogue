@@ -10,6 +10,7 @@ import (
 const (
 	defaultColor = termbox.ColorDefault
 	bgColor      = termbox.ColorDefault
+	altBgColour  = termbox.ColorBlack
 	playerColour = termbox.ColorWhite
 )
 
@@ -38,23 +39,23 @@ func renderPlayer(left, bottom int, p *player) {
 		bottom-p.body.y,
 		p.character,
 		playerColour,
-		bgColor,
+		altBgColour,
 	)
 }
 
 func renderArena(a *arena, top, bottom, left int) {
 	for i := top; i < bottom; i++ {
-		termbox.SetCell(left-1, i, '│', defaultColor, bgColor)
-		termbox.SetCell(left+a.width, i, '│', defaultColor, bgColor)
+		termbox.SetCell(left-1, i, '║', defaultColor, altBgColour)
+		termbox.SetCell(left+a.width, i, '║', defaultColor, altBgColour)
 	}
 
-	termbox.SetCell(left-1, top, '┌', defaultColor, bgColor)
-	termbox.SetCell(left-1, bottom, '└', defaultColor, bgColor)
-	termbox.SetCell(left+a.width, top, '┐', defaultColor, bgColor)
-	termbox.SetCell(left+a.width, bottom, '┘', defaultColor, bgColor)
+	termbox.SetCell(left-1, top, '╔', defaultColor, altBgColour)
+	termbox.SetCell(left-1, bottom, '╚', defaultColor, altBgColour)
+	termbox.SetCell(left+a.width, top, '╗', defaultColor, altBgColour)
+	termbox.SetCell(left+a.width, bottom, '╝', defaultColor, altBgColour)
 
-	fill(left, top, a.width, 1, termbox.Cell{Ch: '─'})
-	fill(left, bottom, a.width, 1, termbox.Cell{Ch: '─'})
+	fill(left, top, a.width, 1, termbox.Cell{Ch: '═', Bg: altBgColour})
+	fill(left, bottom, a.width, 1, termbox.Cell{Ch: '═', Bg: altBgColour})
 }
 
 func renderHealth(left, bottom int, p *player) {

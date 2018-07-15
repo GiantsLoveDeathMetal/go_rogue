@@ -33,7 +33,6 @@ func keyToDirection(k termbox.Key) direction {
 
 func listenToKeyboard(evChan chan keyboardEvent) {
 	termbox.SetInputMode(termbox.InputEsc)
-
 	for {
 		switch ev := termbox.PollEvent(); ev.Type {
 		case termbox.EventKey:

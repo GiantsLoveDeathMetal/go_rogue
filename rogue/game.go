@@ -12,7 +12,7 @@ type Game struct {
 }
 
 func initialPlayer() *player {
-	return newPlayer(coord{x: 10, y: 10})
+	return newPlayer(coord{x: 20, y: 10})
 }
 
 func (g *Game) end() {
@@ -57,12 +57,10 @@ mainloop:
 			case END:
 				break mainloop
 			}
-		default:
+			g.arena.player.current_health -= 1
 			if err := g.render(); err != nil {
 				panic(err)
 			}
-
-			// time.Sleep(g.moveInterval())
 		}
 	}
 }

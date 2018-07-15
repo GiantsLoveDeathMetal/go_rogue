@@ -19,5 +19,5 @@ func (c *coord) move(d direction) error {
 }
 
 func (c *coord) onBorder(o coord) bool {
-	return c.x > o.x || c.y > o.y || c.x < 0 || c.y < 0
+	return c.x >= o.x || c.y > o.y || c.x <= -1 || c.y <= 0
 }
