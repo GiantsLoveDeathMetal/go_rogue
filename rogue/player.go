@@ -30,7 +30,7 @@ func newPlayer(b coord) *player {
 }
 
 func (p *player) die() error {
-	return errors.New("Died")
+	return errors.New("You Died!")
 }
 
 func (p *player) isOnPosition(c coord) bool {

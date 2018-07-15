@@ -51,7 +51,9 @@ mainloop:
 			switch e.eventType {
 			case MOVE:
 				d := keyToDirection(e.key)
-				g.arena.move_player(d)
+				if err := g.arena.move_player(d); err != nil {
+					panic(err)
+				}
 			case RETRY:
 				continue
 			case END:

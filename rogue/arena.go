@@ -25,6 +25,10 @@ func (a *arena) move_player(d direction) error {
 	if nc.onBorder(max_coord) {
 		// a.player.current_health -= 1
 		return nil
+	}
+
+	if a.player.current_health <= 1 {
+		return a.player.die()
 	} else {
 		a.player.body.move(d)
 		return nil
