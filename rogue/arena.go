@@ -8,7 +8,7 @@ type arena struct {
 }
 
 func newArena(p *player, h, w int) *arena {
-	e1 := *spawnEnemy(coord{x: 1, y: 1})
+	e1 := *spawnEnemy(coord{x: 4, y: 4})
 	e2 := *spawnEnemy(coord{x: 12, y: 10})
 	a := &arena{
 		player:  p,
@@ -27,6 +27,7 @@ func (a *arena) move_player(d direction) error {
 
 	nc.move(d)
 	if nc.onBorder(max_coord) {
+		// Uncomment to lose life hitting boarder
 		// a.player.current_health -= 1
 		return nil
 	}
@@ -36,6 +37,18 @@ func (a *arena) move_player(d direction) error {
 	} else {
 		a.player.body.move(d)
 		return nil
+	}
+	return nil
+}
+
+// Make enemies follow their designated patterns
+func (a *arena) move_enemies() error {
+	var new_move direction
+
+	for i := 0; i < len(a.enemies); i++ {
+		enemy := &a.enemies[i]
+		new_move = enemy.next_move()
+		enemy.body.move(new_move)
 	}
 	return nil
 }
