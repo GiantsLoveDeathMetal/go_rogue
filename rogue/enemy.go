@@ -10,7 +10,7 @@ type enemy struct {
 func spawnEnemy(b coord) *enemy {
 	return &enemy{
 		body:      b,
-		health:    1,
+		health:    4,
 		pattern:   []direction{LEFT, LEFT, NO_MOVE, RIGHT, RIGHT, NO_MOVE},
 		character: 'O',
 	}

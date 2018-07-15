@@ -34,6 +34,8 @@ func (a *arena) move_player(d direction) error {
 
 	if a.player.current_health <= 1 {
 		return a.player.die()
+	} else if a.notEmpty(nc) {
+		return nil
 	} else {
 		a.player.body.move(d)
 		return nil
@@ -41,14 +43,38 @@ func (a *arena) move_player(d direction) error {
 	return nil
 }
 
+func (a *arena) notEmpty(c coord) bool {
+	for i := 0; i < len(a.enemies); i++ {
+		e := &a.enemies[i]
+		if e.body == c {
+			e.health -= 1
+			if e.health < 1 {
+				a.enemies[i] = a.enemies[len(a.enemies)-1]
+				a.enemies = a.enemies[:len(a.enemies)-1]
+				// a.enemies = append(a.enemies[:i], a.enemies[i+1]...)
+			}
+			return true
+		}
+	}
+	return false
+}
+
 // Make enemies follow their designated patterns
 func (a *arena) move_enemies() error {
-	var new_move direction
+	var d direction
 
 	for i := 0; i < len(a.enemies); i++ {
 		enemy := &a.enemies[i]
-		new_move = enemy.next_move()
-		enemy.body.move(new_move)
+		d = enemy.next_move()
+
+		nc := coord{x: enemy.body.x, y: enemy.body.y}
+		nc.move(d)
+
+		if a.player.isOnPosition(nc) {
+			a.player.current_health -= 1
+		} else {
+			enemy.body.move(d)
+		}
 	}
 	return nil
 }
