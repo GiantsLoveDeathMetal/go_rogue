@@ -60,6 +60,9 @@ func renderArena(a *arena, top, bottom, left int) {
 	for i := top; i < bottom; i++ {
 		termbox.SetCell(left-1, i, '║', defaultColor, altBgColour)
 		termbox.SetCell(left+a.width, i, '║', defaultColor, altBgColour)
+		for j := left; j < left+a.width; j++ {
+			termbox.SetCell(j, i, '·', defaultColor, bgColor)
+		}
 	}
 
 	termbox.SetCell(left-1, top, '╔', defaultColor, altBgColour)
