@@ -1,6 +1,6 @@
 package main
 
-import "./rogue"
+import "github.com/GiantsLoveDeathMetal/go_rogue/rogue"
 
 func main() {
 	rogue.NewGame().Start()
