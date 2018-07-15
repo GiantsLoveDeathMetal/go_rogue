@@ -22,6 +22,7 @@ const (
 	LEFT
 	UP
 	DOWN
+	NO_MOVE
 )
 
 type direction int

@@ -14,6 +14,8 @@ func (c *coord) move(d direction) error {
 		c.y += 1
 	case DOWN:
 		c.y -= 1
+	case NO_MOVE:
+		return nil
 	}
 	return nil
 }

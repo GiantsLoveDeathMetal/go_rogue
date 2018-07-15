@@ -59,7 +59,7 @@ mainloop:
 			case END:
 				break mainloop
 			}
-			g.arena.player.current_health -= 1
+			// g.arena.player.current_health -= 1
 			if err := g.arena.move_enemies(); err != nil {
 				panic(err)
 			}

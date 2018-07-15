@@ -11,7 +11,7 @@ func spawnEnemy(b coord) *enemy {
 	return &enemy{
 		body:      b,
 		health:    1,
-		pattern:   []direction{LEFT, LEFT, RIGHT, RIGHT},
+		pattern:   []direction{LEFT, LEFT, NO_MOVE, RIGHT, RIGHT, NO_MOVE},
 		character: 'O',
 	}
 }
