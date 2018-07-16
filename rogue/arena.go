@@ -68,10 +68,13 @@ func (a *arena) move_enemies() error {
 		d = enemy.next_move()
 
 		nc := coord{x: enemy.body.x, y: enemy.body.y}
+		max_coord := coord{x: a.width, y: a.height}
 		nc.move(d)
 
 		if a.player.isOnPosition(nc) {
 			a.player.current_health -= 1
+		} else if nc.onBorder(max_coord) {
+			enemy.reversePattern()
 		} else {
 			enemy.body.move(d)
 		}
