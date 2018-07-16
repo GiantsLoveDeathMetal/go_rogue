@@ -10,9 +10,12 @@ type arena struct {
 func newArena(p *player, h, w int) *arena {
 	e1 := *spawnEnemy(coord{x: 4, y: 4})
 	e2 := *spawnEnemy(coord{x: 12, y: 10})
+	e3 := *spawnEnemy(coord{x: 17, y: 12})
+	e4 := *spawnEnemy(coord{x: 11, y: 19})
+	e5 := *spawnEnemy(coord{x: 21, y: 4})
 	a := &arena{
 		player:  p,
-		enemies: []enemy{e1, e2},
+		enemies: []enemy{e1, e2, e3, e4, e5},
 		height:  h,
 		width:   w,
 	}
@@ -27,8 +30,6 @@ func (a *arena) move_player(d direction) error {
 
 	nc.move(d)
 	if nc.onBorder(max_coord) {
-		// Uncomment to lose life hitting boarder
-		// a.player.current_health -= 1
 		return nil
 	}
 
@@ -51,7 +52,6 @@ func (a *arena) notEmpty(c coord) bool {
 			if e.health < 1 {
 				a.enemies[i] = a.enemies[len(a.enemies)-1]
 				a.enemies = a.enemies[:len(a.enemies)-1]
-				// a.enemies = append(a.enemies[:i], a.enemies[i+1]...)
 			}
 			return true
 		}
