@@ -7,12 +7,12 @@ type arena struct {
 	width   int
 }
 
-func newArena(p *player, h, w int) *arena {
+func newArena(p *player, w, h int) *arena {
 	e1 := *spawnEnemy(coord{x: 4, y: 4})
-	e2 := *spawnEnemy(coord{x: 12, y: 10})
-	e3 := *spawnEnemy(coord{x: 17, y: 12})
-	e4 := *spawnEnemy(coord{x: 11, y: 19})
-	e5 := *spawnEnemy(coord{x: 21, y: 4})
+	e2 := *spawnEnemy(coord{x: 10, y: 9})
+	e3 := *spawnEnemy(coord{x: 12, y: 9})
+	e4 := *spawnEnemy(coord{x: 14, y: 9})
+	e5 := *spawnEnemy(coord{x: 9, y: 4})
 	a := &arena{
 		player:  p,
 		enemies: []enemy{e1, e2, e3, e4, e5},

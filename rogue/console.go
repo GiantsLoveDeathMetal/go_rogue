@@ -76,12 +76,12 @@ func renderArena(a *arena, top, bottom, left int) {
 
 func renderHealth(left, bottom int, p *player) {
 	hp := fmt.Sprintf("Health: %v/%v", p.current_health, p.max_health)
-	tbprint(left, bottom+1, defaultColor, defaultColor, hp)
+	tbprint(left+1, bottom+1, defaultColor, defaultColor, hp)
 }
 
 func renderQuitMessage(right, bottom int) {
 	m := "Press 'q' to quit"
-	tbprint(right-17, bottom+1, defaultColor, defaultColor, m)
+	tbprint(right-15, bottom+2, defaultColor, defaultColor, m)
 }
 
 func fill(x, y, w, h int, cell termbox.Cell) {

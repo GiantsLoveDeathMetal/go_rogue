@@ -12,7 +12,7 @@ type Game struct {
 }
 
 func initialPlayer() *player {
-	return newPlayer(coord{x: 20, y: 10})
+	return newPlayer(coord{x: 8, y: 8})
 }
 
 func (g *Game) end() {
@@ -20,7 +20,7 @@ func (g *Game) end() {
 }
 
 func initialArena() *arena {
-	return newArena(initialPlayer(), 20, 50)
+	return newArena(initialPlayer(), 15, 10)
 }
 
 func (g *Game) moveInterval() time.Duration {

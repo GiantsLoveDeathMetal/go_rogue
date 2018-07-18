@@ -20,7 +20,7 @@ https://theasciicode.com.ar/extended-ascii-code/interpunct-space-dot-ascii-code-
 - [X] make enemy collide with other ememy
 
 [MileStone 2]
-- [ ] make map smaller
+- [X] make map smaller
 - [ ] make enemy appear in random locations
 - [ ] make a different type of enemy
 - [ ] Track steps
