@@ -7,12 +7,11 @@ type enemy struct {
 	character rune
 }
 
-func spawnEnemy(spawn_area coord) *enemy {
+func spawnEnemyTypeA(spawn_area coord) *enemy {
 	b := spawn_area.randomCoord()
-
 	return &enemy{
 		body:   b,
-		health: 4,
+		health: 2,
 		pattern: []direction{
 			LEFT,
 			LEFT,
@@ -20,11 +19,40 @@ func spawnEnemy(spawn_area coord) *enemy {
 			LEFT,
 			LEFT,
 			NO_MOVE,
+		},
+		character: '=',
+	}
+}
+
+func spawnEnemyTypeB(spawn_area coord) *enemy {
+	b := spawn_area.randomCoord()
+	return &enemy{
+		body:   b,
+		health: 2,
+		pattern: []direction{
+			LEFT,
+			UP,
 			RIGHT,
-			RIGHT,
+			DOWN,
 			NO_MOVE,
 		},
-		character: 'O',
+		character: 'X',
+	}
+}
+
+func spawnEnemyTypeC(spawn_area coord) *enemy {
+	b := spawn_area.randomCoord()
+	return &enemy{
+		body:   b,
+		health: 2,
+		pattern: []direction{
+			UP,
+			UP,
+			UP,
+			UP,
+			UP,
+		},
+		character: '|',
 	}
 }
 

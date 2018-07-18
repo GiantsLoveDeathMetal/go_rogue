@@ -23,7 +23,8 @@ https://theasciicode.com.ar/extended-ascii-code/interpunct-space-dot-ascii-code-
 - [X] make map smaller
 - [X] make enemy appear in random locations
    - [ ] don't spawn on player
-- [ ] make a different type of enemy
+- [X] make a different type of enemy
+   - [ ] Improve collisions
 - [ ] Track steps
 - [ ] Track enemies killed
 

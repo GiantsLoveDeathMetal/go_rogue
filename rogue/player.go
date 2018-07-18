@@ -13,8 +13,8 @@ func newPlayer(b coord) *player {
 	return &player{
 		// Position of the player
 		body:           b,
-		max_health:     10,
-		current_health: 10,
+		max_health:     3,
+		current_health: 3,
 		character:      '@',
 	}
 }

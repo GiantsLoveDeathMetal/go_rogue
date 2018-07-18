@@ -34,8 +34,8 @@ func (c *coord) randomCoord() coord {
 
 	// Generate new x and y
 	return coord{
-		x: rnd.Intn(c.x),
-		y: rnd.Intn(c.y),
+		x: rnd.Intn(c.x-1) + 1,
+		y: rnd.Intn(c.y-1) + 1,
 	}
 
 }
