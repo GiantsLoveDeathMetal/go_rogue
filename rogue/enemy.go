@@ -7,7 +7,9 @@ type enemy struct {
 	character rune
 }
 
-func spawnEnemy(b coord) *enemy {
+func spawnEnemy(spawn_area coord) *enemy {
+	b := spawn_area.randomCoord()
+
 	return &enemy{
 		body:   b,
 		health: 4,

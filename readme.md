@@ -21,7 +21,8 @@ https://theasciicode.com.ar/extended-ascii-code/interpunct-space-dot-ascii-code-
 
 [MileStone 2]
 - [X] make map smaller
-- [ ] make enemy appear in random locations
+- [X] make enemy appear in random locations
+   - [ ] don't spawn on player
 - [ ] make a different type of enemy
 - [ ] Track steps
 - [ ] Track enemies killed

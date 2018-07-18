@@ -8,11 +8,13 @@ type arena struct {
 }
 
 func newArena(p *player, w, h int) *arena {
-	e1 := *spawnEnemy(coord{x: 4, y: 4})
-	e2 := *spawnEnemy(coord{x: 10, y: 9})
-	e3 := *spawnEnemy(coord{x: 12, y: 9})
-	e4 := *spawnEnemy(coord{x: 14, y: 9})
-	e5 := *spawnEnemy(coord{x: 9, y: 4})
+	spawn_area := coord{x: w, y: h}
+
+	e1 := *spawnEnemy(spawn_area)
+	e2 := *spawnEnemy(spawn_area)
+	e3 := *spawnEnemy(spawn_area)
+	e4 := *spawnEnemy(spawn_area)
+	e5 := *spawnEnemy(spawn_area)
 	a := &arena{
 		player:  p,
 		enemies: []enemy{e1, e2, e3, e4, e5},
