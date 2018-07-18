@@ -44,6 +44,7 @@ func (a *arena) move_player(d direction) error {
 	return nil
 }
 
+// Check that coord is not empty when moving player
 func (a *arena) notEmpty(c coord) bool {
 	for i := 0; i < len(a.enemies); i++ {
 		e := &a.enemies[i]
@@ -59,9 +60,20 @@ func (a *arena) notEmpty(c coord) bool {
 	return false
 }
 
+// Check if a coord is in an slice of coords
+func (c coord) isIn(a []coord) bool {
+	for _, i := range a {
+		if i == c {
+			return true
+		}
+	}
+	return false
+}
+
 // Make enemies follow their designated patterns
 func (a *arena) move_enemies() error {
 	var d direction
+	var blocked []coord
 
 	for i := 0; i < len(a.enemies); i++ {
 		enemy := &a.enemies[i]
@@ -75,8 +87,11 @@ func (a *arena) move_enemies() error {
 			a.player.current_health -= 1
 		} else if nc.onBorder(max_coord) {
 			enemy.reversePattern()
+		} else if nc.isIn(blocked) {
+			return nil
 		} else {
 			enemy.body.move(d)
+			blocked = append(blocked, nc)
 		}
 	}
 	return nil
